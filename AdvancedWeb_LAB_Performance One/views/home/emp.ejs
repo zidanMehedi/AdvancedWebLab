@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home Page</title>
+</head>
+<body>
+	<center>
+		<div>
+		<h1>Welcome Home! <%= user.username%></h1> 		
+		</div>
+
+		<a href="/addProduct"> Add Product</a> |
+		<a href="/addProduct/product"> View Product</a> |
+		<a href="/logout"> Logout</a><br>
+
+
+		Name:<%= user.username %>    <br>
+		Id: <%= user.id %> <br>
+	</center>
+</body>
+</html>
