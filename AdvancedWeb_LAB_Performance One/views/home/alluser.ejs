@@ -24,9 +24,9 @@
 		<tr>
 			<td><%= userlist[i].id %></td>
 			<td><%= userlist[i].username %></td>
-			<td><%= userlist[i].password %></td>
-			<td><%= userlist[i].type %></td>
-			<td><a href="/home/edit/<%= userlist[i].id %>">Edit</a>|<a href="/home/delete/<%= userlist[i].id %>">Delete</a></td>
+			<td><%= userlist[i].name %></td>
+			<td><%= userlist[i].contact %></td>
+			<td><a href="/home/edit/<%= userlist[i].username %>">Edit</a>|<a href="/home/delete/<%= userlist[i].id %>">Delete</a></td>
 
 		</tr>
 		<% } %>

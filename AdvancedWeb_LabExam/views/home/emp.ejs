@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home Page</title>
+</head>
+<body>
+	<center>
+		<div>
+		<h1>Welcome Home! <%= user.username%></h1> 		
+		</div>
+
+		<a href="/product/product"> View Product</a> |
+		<a href="/home/cngPassEmp/<%=info.id%>/<%=info.username%>"> Change Password</a> |
+		<a href="/logout"> Logout</a><br>
+
+
+		Name:<%= user.name %>    <br>
+		Id: <%= user.id %> <br>
+	</center>
+</body>
+</html>

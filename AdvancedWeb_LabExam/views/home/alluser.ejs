@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home Page</title>
+	<script src="/jquery-3.4.1.js"></script>
+	<script src="/script.js"></script>
+</head>
+<body>
+<center>
+	<div>
+		<h1>User List</h1> 		
+	</div>
+
+	<a href="/home"> Back</a> |
+	<a href="/logout"> logout</a><br>
+
+	<table border="1">
+		<tr>
+			<td>ID</td>
+			<td>Username</td>
+			<td>Name</td>
+			<td>Contact</td>
+			<td>Action</td>
+		</tr>
+		<% for(var i=0; i < userlist.length; i++){ %>
+		<tr>
+			<td><%= userlist[i].id %></td>
+			<td><%= userlist[i].username %></td>
+			<td><%= userlist[i].name %></td>
+			<td><%= userlist[i].contact %></td>
+			<td><button id="edit" value="<%= userlist[i].id %>">Edit</button>|<button id="dlt" value="<%= userlist[i].id %>">Delete</button></td>
+
+		</tr>
+		<% } %>
+	</table>
+</center>
+</body>
+</html>

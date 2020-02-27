@@ -1,0 +1,35 @@
+<html>
+<head>
+	<!-- <script type="text/javascript">
+		function find()
+		{
+			var key = document.getElementById('search').value;
+			var xhttp = new XMLHttpRequest();
+			xhttp.open("GET", "http://localhost:3000/home/uSearch/"+key, true);
+			xhttp.send();
+			  xhttp.onreadystatechange = function() {
+			    if (this.status==404) {
+			    	document.getElementById('data').innerHTML="";
+			    }
+			    else
+			    {
+			    	if (this.readyState == 4 && this.status == 200) {
+			     	document.getElementById('data').innerHTML = this.responseText;
+			    }
+			    }
+			  };
+		}
+	</script> -->
+	<script src="/jquery-3.4.1.js"></script>
+	<script src="/script.js"></script>
+</head>
+<body>
+	<center>
+	Search:	<input type="text" id="search" autocomplete="off">
+	<hr>
+	<div id="data">
+		
+	</div>
+	</center>
+</body>
+</html>

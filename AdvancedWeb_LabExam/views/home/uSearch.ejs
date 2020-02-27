@@ -1,0 +1,17 @@
+<html>
+	<body>
+		<table border="1">
+			<tr>
+				<th>Name</th>
+				<th>Pass</th>
+			</tr>
+			<% for (var i=0;i<data.length; i++) {%>
+			
+			<tr>
+				<td><%=data[i].username%></td>
+				<td><%=data[i].password%></td>
+			</tr>
+			<% }%>
+		</table>
+	</body>
+</html>

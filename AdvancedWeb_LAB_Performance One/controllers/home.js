@@ -1,6 +1,8 @@
 var express 	= require('express');
 var router 		= express.Router();
 var userModel   = require.main.require('./models/user-model');
+var empModel	= require.main.require('./models/emp-model');
+
 
 router.get('*',function(req,res,next){
 	if(req.cookies['username']!=null){
@@ -19,7 +21,7 @@ router.get('/', function(req, res){
 
 router.get('/emp', function(req, res){
 		
-		userModel.getByUname(req.cookies['username'], function(result){
+		empModel.getByUname(req.cookies['username'], function(result){
 		res.render('home/emp', {user: result});
 	});
 });
@@ -60,11 +62,11 @@ router.get('/edit/:id', function(req, res){
 router.post('/edit/:id', function(req, res){
 	var userUpdate={
 		id:req.params.id,
-		uname:req.body.uname,
-		password:req.body.password
+		name:req.body.name,
+		contact:req.body.contact
 	};
 	console.log(userUpdate);
-	userModel.update(userUpdate,function(results){
+	empModel.update(userUpdate,function(results){
 		if(results){
 			res.redirect('../alluser');
 		}else{
