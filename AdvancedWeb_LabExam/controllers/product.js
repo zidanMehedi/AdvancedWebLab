@@ -4,7 +4,49 @@ var productModel= require.main.require('./models/product-model');
 var catModel= require.main.require('./models/category-model');
 var subcatModel= require.main.require('./models/subcategory-model');
 
+router.get('*',function(req,res,next){
+	if(req.cookies['username']!=null){
+		next();
+	}else{
+		res.redirect('/login');
+	}
+});
 
+router.get('/view/:id', function(req, res){
+	productModel.getById(req.params.id,function(status){
+			if(status!=null){
+				res.render('product/view',{user:status});
+			}else{
+				res.redirect('/home/emp');
+			}
+		});
+});
+
+router.get('/buy/:id', function(req, res){
+	productModel.getById(req.params.id,function(status){
+			if(status!=null){
+				res.render('product/buy',{user:status});
+			}else{
+				res.redirect('/home/emp');
+			}
+		});
+});
+router.post('/buy/:id', function(req, res){
+	var newQty=req.body.quantity-req.body.aquantity;
+	var data ={
+		id:req.params.id,
+		method:req.body.purchase,
+		quantity:newQty
+	}
+	console.log(data);
+	productModel.updateQty(data,function(status){
+			if(status){
+				res.redierct('/home/emp');
+			}else{
+				res.redirect('/product/view');
+			}
+		});
+});
 router.get('/', function(req, res){
 	subcatModel.getAll(function(status){
 			if(status.length>0){
@@ -83,6 +125,18 @@ router.get('/product', function(req, res){
 		}
 	});
 });
+
+router.get('/emproduct', function(req, res){
+
+	productModel.getAll(function(results){
+		if(results.length > 0){
+			res.render('product/emproduct', {userlist: results});
+		}else{
+			res.send('invalid username/password');
+		}
+	});
+});
+
 
 router.get('/delete/:id', function(req, res){
  	var id = req.params.id;

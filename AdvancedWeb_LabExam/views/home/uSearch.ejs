@@ -2,14 +2,18 @@
 	<body>
 		<table border="1">
 			<tr>
-				<th>Name</th>
-				<th>Pass</th>
+				<td>ID</td>
+				<td>Name</td>
+				<td>Quantity</td>
+				<td>Price</td>
 			</tr>
 			<% for (var i=0;i<data.length; i++) {%>
 			
 			<tr>
-				<td><%=data[i].username%></td>
-				<td><%=data[i].password%></td>
+				<td><%= data[i].id %></td>
+				<td><%= data[i].name %></td>
+				<td><%= data[i].quantity %></td>
+				<td><%= data[i].price %></td>
 			</tr>
 			<% }%>
 		</table>

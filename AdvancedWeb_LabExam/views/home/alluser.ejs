@@ -30,7 +30,7 @@
 			<td><%= userlist[i].name %></td>
 			<td><%= userlist[i].email %></td>
 			<td><%= userlist[i].contact %></td>
-			<td><button id="edit" value="<%= userlist[i].id %>">Edit</button>|<button id="dlt" value="<%= userlist[i].id %>">Delete</button></td>
+			<td><a href="/home/edit/<%= userlist[i].id %>">Edit</a>|<a href="/home/delete/<%= userlist[i].id %>">Delete</a></td>
 
 		</tr>
 		<% } %>

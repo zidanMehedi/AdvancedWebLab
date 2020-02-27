@@ -4,7 +4,6 @@ module.exports ={
 	getById: function(id, callback){
 		var sql = "select * from product where id=?";
 		db.getResult(sql, [id], function(result){
-
 			if(result.length > 0){
 				callback(result[0]);
 			}else{
@@ -71,5 +70,21 @@ module.exports ={
 				callback(false);
 			}
 		});
-	}
+	},
+	updateQty: function(data, callback){
+		var sql = "update product set quantity=? where id=?";
+		db.execute(sql,[data.quantity,data.id], function(status){
+			if(status){
+				callback(true);
+			}else{
+				callback(false);
+			}
+		});
+	},
+	searchUser:function(data,callback){
+		var sql = "select * from product where name like '%"+data+"%'";
+		db.getResult(sql, null, function(results){
+				callback(results);
+			});
+		}
 }

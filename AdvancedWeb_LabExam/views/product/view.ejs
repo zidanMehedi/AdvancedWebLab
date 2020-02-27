@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home Page</title>
+</head>
+<body>
+	<center>
+
+		<h1>Name:<%= user.name %></h1>    <br>
+		Details: <%= user.review %> <br>
+		Quantity:<%= user.quantity %>    <br>
+		Price: <%= user.price %> <br><br>
+		
+		<a href="/product/buy/<%= user.id %>">Buy</a>
+		<a href="/home/emp"> Back</a> |
+		<a href="/logout"> Logout</a><br>
+	</center>
+</body>
+</html>

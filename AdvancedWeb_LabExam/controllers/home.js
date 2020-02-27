@@ -2,6 +2,7 @@ var express 	= require('express');
 var router 		= express.Router();
 var userModel   = require.main.require('./models/user-model');
 var empModel	= require.main.require('./models/emp-model');
+var productModel	= require.main.require('./models/product-model');
 
 
 router.get('*',function(req,res,next){
@@ -55,9 +56,21 @@ router.get('/alluser', function(req, res){
 
 router.get('/delete/:id', function(req, res){
 	var id = req.params.id;
-	empModel.delete(id,function(result){
-		if(result){
-			res.redirect('../alluser');
+	empModel.delete(id,function(result)
+	{
+		if(result)
+		{
+			userModel.delete(id,function(result)
+			{
+				if(result)
+				{
+					res.redirect('../alluser');
+				}
+				else
+				{
+					res.send('invalid username/password');
+				}
+			});
 		}else{
 			res.send('invalid username/password');
 		}
@@ -124,7 +137,7 @@ router.post('/cngPassEmp/:id/:uname', function(req, res){
 });
 
 router.get('/uSearch/:key', function(req, res){
-		userModel.searchUser(req.params.key, function(result){
+		productModel.searchUser(req.params.key, function(result){
 			console.log(result);
 			res.render('home/uSearch', {data : result});
 	});
