@@ -51,6 +51,16 @@ module.exports ={
 			}
 		});
 	},
+	insert: function(user, callback){
+		var sql = "insert into orders values (?,?,?,?,?,?)";
+		db.execute(sql, [null,user.name,user.review,user.quantity,user.price,user.subcategory], function(status){
+			if(status){
+				callback(true);
+			}else{
+				callback(false);
+			}
+		});
+	},
 	delete: function(id, callback){
 		var sql = "delete from product where id=?";
 		db.execute(sql, [id], function(status){
@@ -72,7 +82,7 @@ module.exports ={
 		});
 	},
 	updateQty: function(data, callback){
-		var sql = "update product set quantity=? where id=?";
+		var sql = "update product set quantity=? where name=?";
 		db.execute(sql,[data.quantity,data.id], function(status){
 			if(status){
 				callback(true);

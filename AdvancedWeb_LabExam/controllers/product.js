@@ -32,16 +32,15 @@ router.get('/buy/:id', function(req, res){
 		});
 });
 router.post('/buy/:id', function(req, res){
-	var newQty=req.body.quantity-req.body.aquantity;
+	var newQty=parseInt(req.body.aquantity)-parseInt(req.body.quantity);
 	var data ={
-		id:req.params.id,
-		method:req.body.purchase,
+		id:req.body.name,
 		quantity:newQty
 	}
 	console.log(data);
 	productModel.updateQty(data,function(status){
 			if(status){
-				res.redierct('/home/emp');
+				res.redirect('/home/emp');
 			}else{
 				res.redirect('/product/view');
 			}
