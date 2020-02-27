@@ -33,7 +33,7 @@ $(document).ready(function(){
 	$('#dlt').on('click',function()
 	{
 		var value=$('#dlt').val();
-		alert(value);
+		//alert(value);
 		if(confirm('Are You Sure?')){
 			$.ajax({
 				url:'/home/delete/'+value,

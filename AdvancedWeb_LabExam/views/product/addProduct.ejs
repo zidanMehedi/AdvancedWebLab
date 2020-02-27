@@ -22,6 +22,20 @@
 					<td><input type="text" name="price" ></td>
 				</tr>
 				<tr>
+					<td>Review:</td>
+					<td><textarea cols="22" rows="4" name="review"></textarea></td>
+				</tr>
+				<tr>
+					<td>Subcategory:</td>
+					<td>
+						<select name="subcategory">
+							<% for(var i=0; i < item.length; i++){ %>
+						  <option value="<%=item[i].subcat_id%>"><%=item[i].subcat_name%></option>
+						  <% } %>
+						</select>
+					</td>
+				</tr>
+				<tr>
 					<td><a href="/home/emp">Back</a></td>
 					<td colspan="2"><input type="submit" name="submit" value="Submit" ></td>
 				</tr>

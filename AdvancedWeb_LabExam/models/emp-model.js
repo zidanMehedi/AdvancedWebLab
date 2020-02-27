@@ -33,7 +33,7 @@ module.exports ={
 		});
 	},*/
 	getAll:function(callback){
-		var sql = "select * users emp";
+		var sql = "select * from users";
 		db.getResult(sql, null, function(results){
 			if(results.length > 0){
 				callback(results);

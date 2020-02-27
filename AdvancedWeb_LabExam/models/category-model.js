@@ -2,7 +2,7 @@ var db = require('./db');
 
 module.exports ={
 	getById: function(id, callback){
-		var sql = "select * from product where id=?";
+		var sql = "select * from category where cat_id=?";
 		db.getResult(sql, [id], function(result){
 
 			if(result.length > 0){
@@ -13,7 +13,7 @@ module.exports ={
 		});
 	},
 	getByUname: function(uname, callback){
-		var sql = "select * from product where name=?";
+		var sql = "select * from category where cat_name=?";
 		db.getResult(sql, [uname], function(result){
 			if(result.length > 0){
 				callback(result[0]);
@@ -33,7 +33,7 @@ module.exports ={
 		});
 	},*/
 	getAll:function(callback){
-		var sql = "select * from product";
+		var sql = "select * from category";
 		db.getResult(sql, null, function(results){
 			if(results.length > 0){
 				callback(results);
@@ -43,8 +43,8 @@ module.exports ={
 		});
 	},
 	insert: function(user, callback){
-		var sql = "insert into product values (?,?,?,?,?,?)";
-		db.execute(sql, [null,user.name,user.review,user.quantity,user.price,user.subcategory], function(status){
+		var sql = "insert into category values (?,?)";
+		db.execute(sql, [null,user.catname], function(status){
 			if(status){
 				callback(true);
 			}else{
@@ -53,7 +53,7 @@ module.exports ={
 		});
 	},
 	delete: function(id, callback){
-		var sql = "delete from product where id=?";
+		var sql = "delete from category where cat_id=?";
 		db.execute(sql, [id], function(status){
 			if(status){
 				callback(true);
@@ -63,8 +63,8 @@ module.exports ={
 		});
 	},
 	update: function(userUpdate, callback){
-		var sql = "update product set name=?, quantity=?, price=? where id=?";
-		db.execute(sql,[userUpdate.name,userUpdate.quantity,userUpdate.price,userUpdate.id], function(status){
+		var sql = "update category set cat_name=? where cat_id=?";
+		db.execute(sql,[userUpdate.catname,userUpdate.id], function(status){
 			if(status){
 				callback(true);
 			}else{
